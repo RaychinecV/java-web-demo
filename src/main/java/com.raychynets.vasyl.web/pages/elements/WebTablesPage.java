@@ -1,7 +1,5 @@
 package com.raychynets.vasyl.web.pages.elements;
 
-import com.google.inject.Inject;
-import com.raychynets.vasyl.web.constants.elements.WebTablesUserFields;
 import com.raychynets.vasyl.web.models.PageElement;
 import com.raychynets.vasyl.web.models.elements.WebTablesUser;
 import com.raychynets.vasyl.web.pages.BaseModulePage;
@@ -34,7 +32,7 @@ public class WebTablesPage extends BaseModulePage {
         el.setHasScroll(false);
     });
 
-    @Inject
+
     public WebTablesPage(WebDriver driver) {
         super(driver);
         expectedTitle = "Web Tables";
@@ -145,5 +143,14 @@ public class WebTablesPage extends BaseModulePage {
                 .findFirst().get();
 
         return searchedUserRow;
+    }
+
+    public enum WebTablesUserFields {
+        FIRST_NAME,
+        LAST_NAME,
+        EMAIL,
+        AGE,
+        SALARY,
+        DEPARTMENT;
     }
 }

@@ -1,6 +1,5 @@
 package com.raychynets.vasyl.web.pages.navigation_menu;
 
-import com.google.inject.Inject;
 import com.raychynets.vasyl.web.models.PageElement;
 import com.raychynets.vasyl.web.pages.BaseWebPage;
 import io.qameta.allure.Step;
@@ -55,7 +54,6 @@ public class InteractionsMenu extends BaseWebPage implements BaseMenu {
 
     }
 
-    @Inject
     public InteractionsMenu(WebDriver driver) {
         super(driver);
     }

@@ -1,6 +1,5 @@
 package com.raychynets.vasyl.web.pages.widgets;
 
-import com.google.inject.Inject;
 import com.raychynets.vasyl.web.models.PageElement;
 import com.raychynets.vasyl.web.pages.BaseModulePage;
 import io.qameta.allure.Step;
@@ -35,7 +34,7 @@ public class ProgressBarPage extends BaseModulePage {
         el.setHasScroll(false);
     });
 
-    @Inject
+
     public ProgressBarPage(WebDriver driver) {
         super(driver);
         expectedTitle = "Progress Bar";
@@ -73,7 +72,7 @@ public class ProgressBarPage extends BaseModulePage {
 
     @Step
     public ProgressBarPage stopProgressBarAtTheMark(int mark) {
-        this.waitThatProgressBarAtMark(mark);
+        this.waitUntilProgressBarWillBeAtTheMark(mark);
         this.clickOnBtnStop();
         return this;
     }
@@ -89,7 +88,7 @@ public class ProgressBarPage extends BaseModulePage {
     }
 
     @Step
-    public ProgressBarPage waitThatProgressBarAtMark(int mark) {
+    public ProgressBarPage waitUntilProgressBarWillBeAtTheMark(int mark) {
         if (mark <= 0 || mark > 100) {
             throw new IllegalArgumentException("Mark can't be 0 or more than 100 !!!");
         }

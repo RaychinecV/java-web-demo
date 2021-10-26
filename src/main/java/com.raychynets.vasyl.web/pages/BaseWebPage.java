@@ -1,6 +1,5 @@
 package com.raychynets.vasyl.web.pages;
 
-import com.google.inject.Inject;
 import com.raychynets.vasyl.web.models.PageElement;
 import com.raychynets.vasyl.web.services.Element;
 import com.raychynets.vasyl.web.services.WaitWeb;
@@ -20,7 +19,7 @@ public class BaseWebPage extends BasePage {
         el.setHasScroll(false);
     });
 
-    @Inject
+
     public BaseWebPage(WebDriver driver) {
         super(driver);
         scroll = new WebScroll(driver);

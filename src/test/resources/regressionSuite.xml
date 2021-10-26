@@ -2,10 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All" verbose="4" parallel="classes" thread-count="2">
 
-    <listeners>
-        <listener class-name="com.raychynets.vasyl.web.listener.TestListener"/>
-    </listeners>
-
     <test name="Regression">
         <packages>
             <package name="com.raychynets.vasyl.web.tests.*"/>

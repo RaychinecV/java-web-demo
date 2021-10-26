@@ -1,6 +1,5 @@
 package com.raychynets.vasyl.web.pages;
 
-import com.google.inject.Inject;
 import com.raychynets.vasyl.web.models.PageElement;
 import com.raychynets.vasyl.web.pages.navigation_menu.NavigationMenu;
 import io.qameta.allure.Step;
@@ -22,7 +21,7 @@ public abstract class BaseModulePage extends BaseWebPage {
         el.setHasScroll(false);
     });
 
-    @Inject
+
     public BaseModulePage(WebDriver driver) {
         super(driver);
         navigationMenu = new NavigationMenu(driver);

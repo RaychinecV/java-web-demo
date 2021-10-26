@@ -1,6 +1,5 @@
 package com.raychynets.vasyl.web.pages.elements;
 
-import com.google.inject.Inject;
 import com.raychynets.vasyl.web.models.PageElement;
 import com.raychynets.vasyl.web.models.elements.TextBoxUser;
 import com.raychynets.vasyl.web.pages.BaseModulePage;
@@ -62,7 +61,6 @@ public class TextBoxPage extends BaseModulePage {
         el.setHasScroll(false);
     });
 
-    @Inject
     public TextBoxPage(WebDriver driver) {
         super(driver);
         expectedTitle = "Text Box";
@@ -70,61 +68,65 @@ public class TextBoxPage extends BaseModulePage {
 
     @Step
     public TextBoxPage enterAllFields(final TextBoxUser user) {
-        this
-                .enterFullName(user)
-                .enterEmail(user)
-                .enterCurrentAddress(user)
-                .enterPermanentAddress(user);
+        if (user != null) {
+            this
+                    .enterFullName(user)
+                    .enterEmail(user)
+                    .enterCurrentAddress(user)
+                    .enterPermanentAddress(user);
+        } else {
+            throw new IllegalArgumentException("Input argument can't be null!!!");
+        }
         return this;
     }
 
     @Step
     public TextBoxPage enterFullName(final TextBoxUser user) {
-        this.enterFullName(user.getFullName());
+        if (user.getFullName() != null) this.enterFullName(user.getFullName());
         return this;
     }
 
     @Step
     public TextBoxPage enterEmail(final TextBoxUser user) {
-        this.enterEmail(user.getEmail());
+        if (user.getEmail() != null) this.enterEmail(user.getEmail());
         return this;
     }
 
     @Step
     public TextBoxPage enterCurrentAddress(final TextBoxUser user) {
-        this.enterCurrentAddress(user.getCurrentAddress());
+        if (user.getCurrentAddress() != null) this.enterCurrentAddress(user.getCurrentAddress());
         return this;
     }
 
     @Step
     public TextBoxPage enterPermanentAddress(final TextBoxUser user) {
-        this.enterPermanentAddress(user.getPermanentAddress());
+        if (user.getPermanentAddress() != null) this.enterPermanentAddress(user.getPermanentAddress());
         return this;
     }
 
     @Step
-    private TextBoxPage enterFullName(final String fullName) {
+    public TextBoxPage enterFullName(final String fullName) {
         wait.waitToBeVisible(fldFullName);
         action.enterText(fldFullName, fullName);
         return this;
     }
 
     @Step
-    private TextBoxPage enterEmail(final String email) {
+    public TextBoxPage enterEmail(final String email) {
         wait.waitToBeVisible(fldEmail);
         action.enterText(fldEmail, email);
         return this;
     }
 
     @Step
-    private TextBoxPage enterCurrentAddress(final String currentAddress) {
+    public TextBoxPage enterCurrentAddress(final String currentAddress) {
         wait.waitToBeVisible(fldCurrentAddress);
         action.enterText(fldCurrentAddress, currentAddress);
         return this;
     }
 
     @Step
-    private TextBoxPage enterPermanentAddress(final String PermanentAddress) {
+    public TextBoxPage enterPermanentAddress(final String PermanentAddress) {
         wait.waitToBeVisible(fldPermanentAddress);
         action.enterText(fldPermanentAddress, PermanentAddress);
         return this;
@@ -132,6 +134,7 @@ public class TextBoxPage extends BaseModulePage {
 
     @Step
     public TextBoxPage validateThatActualAndExpectedUserDataSame(final TextBoxUser user) {
+        log.info("Input user {}", user);
         if (user.getFullName() != null) {
             assertThat(this.getOutputName()).isEqualTo(user.getFullName());
         }

@@ -1,6 +1,5 @@
 package com.raychynets.vasyl.web.pages;
 
-import com.google.inject.Inject;
 import com.raychynets.vasyl.web.services.BaseActionService;
 import com.raychynets.vasyl.web.services.BaseElementService;
 import com.raychynets.vasyl.web.services.BaseScrollService;
@@ -16,7 +15,6 @@ public abstract class BasePage implements WithAssertions {
     protected BaseScrollService scroll;
     protected BaseActionService action;
 
-    @Inject
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }

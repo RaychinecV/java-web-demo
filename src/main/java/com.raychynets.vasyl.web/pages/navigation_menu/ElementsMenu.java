@@ -1,12 +1,13 @@
 package com.raychynets.vasyl.web.pages.navigation_menu;
 
-import com.google.inject.Inject;
 import com.raychynets.vasyl.web.models.PageElement;
 import com.raychynets.vasyl.web.pages.BaseWebPage;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class ElementsMenu extends BaseWebPage implements BaseMenu {
 
     private final PageElement dropdownElements = new PageElement(el -> {
@@ -16,7 +17,12 @@ public class ElementsMenu extends BaseWebPage implements BaseMenu {
     });
     private final PageElement openDropdownList = new PageElement(el -> {
         el.setName("Open dropdown list");
-        el.setLocator(By.cssSelector(".element-list.collapse.show"));
+        el.setLocator(By.xpath("//div[text()='Elements']/ancestor::span/following-sibling::div[@class = 'element-list collapse show']"));
+        el.setHasScroll(false);
+    });
+    private final PageElement closedDropdownList = new PageElement(el -> {
+        el.setName("Open dropdown list");
+        el.setLocator(By.xpath("//div[text()='Elements']/ancestor::span/following-sibling::div[@class = 'element-list collapse']"));
         el.setHasScroll(false);
     });
 
@@ -70,7 +76,7 @@ public class ElementsMenu extends BaseWebPage implements BaseMenu {
 
         private PageElement pageElement;
 
-        @Inject
+
         ElementsNavigationMenu(PageElement pageElement) {
             this.pageElement = pageElement;
         }
@@ -88,18 +94,26 @@ public class ElementsMenu extends BaseWebPage implements BaseMenu {
     @Step
     @Override
     public ElementsMenu openMenu() {
-        wait.waitToBeClickable(dropdownElements);
-        action.click(dropdownElements);
-        wait.waitToBeVisible(openDropdownList);
+        if (!this.isDropdownSubmenuOpened()) {
+            wait.waitToBeClickable(dropdownElements);
+            action.click(dropdownElements);
+            wait.waitToBeVisible(openDropdownList);
+        } else {
+            log.info("Elements dropdown sub menu is opened.");
+        }
         return this;
     }
 
     @Step
     @Override
     public ElementsMenu closeMenu() {
-        wait.waitToBeClickable(dropdownElements);
-        action.click(dropdownElements);
-        wait.waitToBeInvisible(openDropdownList);
+        if (this.isDropdownSubmenuOpened()) {
+            wait.waitToBeClickable(dropdownElements);
+            action.click(dropdownElements);
+            wait.waitToBeInvisible(openDropdownList);
+        } else {
+            log.info("Elements dropdown sub menu is closed.");
+        }
         return this;
     }
 
@@ -109,5 +123,9 @@ public class ElementsMenu extends BaseWebPage implements BaseMenu {
         wait.waitToBeClickable(menu.pageElement);
         action.click(menu.pageElement);
         return this;
+    }
+
+    private boolean isDropdownSubmenuOpened() {
+        return element.isElementPresent(openDropdownList, 1);
     }
 }

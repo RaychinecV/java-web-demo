@@ -1,6 +1,6 @@
 package com.raychynets.vasyl.web.pages;
 
-import com.google.inject.Inject;
+import com.raychynets.vasyl.web.constants.ApplicationProperties;
 import com.raychynets.vasyl.web.models.BaseElement;
 import com.raychynets.vasyl.web.models.PageElement;
 import io.qameta.allure.Step;
@@ -56,6 +56,7 @@ public class HomePage extends BaseWebPage {
         public BaseElement getPageElement() {
             return pageElement;
         }
+
     }
 
     private final PageElement baseBanner = new PageElement(el -> {
@@ -64,7 +65,7 @@ public class HomePage extends BaseWebPage {
         el.setHasScroll(false);
     });
 
-    @Inject
+
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -89,5 +90,10 @@ public class HomePage extends BaseWebPage {
         log.info("Navigating to the <{}>.", menu.pageElement.getName());
         wait.waitToBeClickable(menu.pageElement);
         action.click(menu.pageElement);
+    }
+
+    public HomePage openSite() {
+        driver.navigate().to(ApplicationProperties.BASE_URL);
+        return this;
     }
 }

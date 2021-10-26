@@ -1,6 +1,5 @@
 package com.raychynets.vasyl.web.pages.navigation_menu;
 
-import com.google.inject.Inject;
 import com.raychynets.vasyl.web.models.PageElement;
 import com.raychynets.vasyl.web.pages.BaseWebPage;
 import io.qameta.allure.Step;
@@ -39,7 +38,6 @@ public class FormsMenu extends BaseWebPage implements BaseMenu {
 
     }
 
-    @Inject
     public FormsMenu(WebDriver driver) {
         super(driver);
     }

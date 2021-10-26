@@ -16,24 +16,24 @@
         <aspectj.version>1.9.7</aspectj.version>
         <assertj.version>3.20.2</assertj.version>
         <log4j.version>2.14.1</log4j.version>
-        <guice.version>5.0.1</guice.version>
         <allure.testng.version>2.15.0</allure.testng.version>
         <slf4j.version>1.7.32</slf4j.version>
         <lombok.version>1.18.20</lombok.version>
         <javafaker.version>1.0.2</javafaker.version>
-        <guice.version>5.0.1</guice.version>
         <ashot.version>1.5.4</ashot.version>
+        <cucumber.version>6.11.0</cucumber.version>
+        <cucumber-picocontainer.version>7.0.0</cucumber-picocontainer.version>
+        <allure-cucumber6-jvm.version>2.15.0</allure-cucumber6-jvm.version>
 
         <!--plugins versions-->
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <maven.surefire.version>3.0.0-M5</maven.surefire.version>
 
         <!--system property variables-->
-        <browser>chrome</browser>
-        <is.headless>false</is.headless>
-
         <is.remote.webdriver>false</is.remote.webdriver>
+        <browser>chrome</browser>
         <browser.version>93.0</browser.version>
+        <is.headless>false</is.headless>
         <remote.driver.url>http://localhost:4444/wd/hub</remote.driver.url>
     </properties>
 
@@ -75,12 +75,6 @@
             <version>${allure.testng.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${aspectj.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4j.version}</version>
@@ -96,14 +90,30 @@
             <version>${javafaker.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
-            <version>${guice.version}</version>
-        </dependency>
-        <dependency>
             <groupId>ru.yandex.qatools.ashot</groupId>
             <artifactId>ashot</artifactId>
             <version>${ashot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber6-jvm</artifactId>
+            <version>${allure-cucumber6-jvm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucumber-picocontainer.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -137,16 +147,13 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.version}</version>
                 <configuration>
+                    <parallel>classes</parallel>
+                    <threadCount>2</threadCount>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/ExecuteSuite.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/regressionSuite.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    <systemProperties>
-                        <property>
-                            <name>allure.results.directory</name>
-                            <value>target/allure-results</value>
-                        </property>
-                    </systemProperties>
                     <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                         <browser>${browser}</browser>
                         <browser.version>${browser.version}</browser.version>
                         <is.headless>${is.headless}</is.headless>
@@ -155,9 +162,17 @@
                     </systemPropertyVariables>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                        -Dcucumber.options="--plugin io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"
                     </argLine>
                     <testFailureIgnore>false</testFailureIgnore>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>io.qameta.allure</groupId>

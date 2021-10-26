@@ -4,11 +4,11 @@ import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
 
-public class Driver {
+public class DriverManager {
 
     private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
 
-    public static void setUp() {
+    public void setUp() {
         WebDriver driver = new DriverFactory().create();
         DRIVER.set(driver);
         DRIVER.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
@@ -16,14 +16,14 @@ public class Driver {
         DRIVER.get().manage().window().maximize();
     }
 
-    public static void tearDown() {
+    public void tearDown() {
         if (DRIVER.get() != null) {
             DRIVER.get().quit();
             DRIVER.remove();
         }
     }
 
-    public static WebDriver getDriver() {
+    public WebDriver getDriver() {
         return DRIVER.get();
     }
 }

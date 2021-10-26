@@ -1,6 +1,5 @@
 package com.raychynets.vasyl.web.pages.navigation_menu;
 
-import com.google.inject.Inject;
 import org.openqa.selenium.WebDriver;
 
 public class NavigationMenu {
@@ -12,7 +11,6 @@ public class NavigationMenu {
     public InteractionsMenu interactionsMenu;
     public BookStoreApplicationMenu bookStoreApplicationMenu;
 
-    @Inject
     public NavigationMenu(WebDriver driver) {
         this.elementsMenu = new ElementsMenu(driver);
         this.formsMenu = new FormsMenu(driver);

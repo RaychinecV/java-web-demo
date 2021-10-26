@@ -4,7 +4,6 @@ import com.raychynets.vasyl.web.driver.Browsers;
 
 public final class ApplicationProperties {
     public static final Browsers BROWSER = Browsers.valueOf(System.getProperty("browser", "chrome").toUpperCase());
-    public static final Browsers PLATFORM = Browsers.valueOf(System.getProperty("browser", "chrome").toUpperCase());
     public static final String BROWSER_VERSION = System.getProperty("browser.version");
     public static final String BASE_URL = System.getProperty("base.url", "https://demoqa.com/");
     public static final String OS_NAME = System.getProperty("os.name");

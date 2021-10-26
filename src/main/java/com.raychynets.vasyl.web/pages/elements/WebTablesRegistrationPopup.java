@@ -1,6 +1,5 @@
 package com.raychynets.vasyl.web.pages.elements;
 
-import com.google.inject.Inject;
 import com.raychynets.vasyl.web.models.PageElement;
 import com.raychynets.vasyl.web.models.elements.WebTablesUser;
 import com.raychynets.vasyl.web.pages.BaseWebPage;
@@ -57,19 +56,17 @@ public class WebTablesRegistrationPopup extends BaseWebPage {
 
     private String expectedLabel = "Registration Form";
 
-    @Inject
     public WebTablesRegistrationPopup(WebDriver driver) {
         super(driver);
-
     }
 
     @Step
     public void updateUser(WebTablesUser updateUser) {
-        this.addUser(updateUser);
+        this.fillInAllUserFields(updateUser);
     }
 
     @Step
-    public void addUser(final WebTablesUser user) {
+    public void fillInAllUserFields(final WebTablesUser user) {
         Objects.requireNonNull(user);
 
         this
@@ -79,89 +76,88 @@ public class WebTablesRegistrationPopup extends BaseWebPage {
                 .enterEmail(user)
                 .enterAge(user)
                 .enterSalary(user)
-                .enterDepartment(user)
-                .clickBtnSubmit();
+                .enterDepartment(user);
     }
 
     @Step
-    private void clickBtnSubmit() {
+    public void clickBtnSubmit() {
         wait.waitToBeClickable(btnSubmit);
         action.click(btnSubmit);
     }
 
     @Step
-    private WebTablesRegistrationPopup enterFirstName(final WebTablesUser user) {
+    public WebTablesRegistrationPopup enterFirstName(final WebTablesUser user) {
         if (user.getFirstName() != null) this.enterFirstName(user.getFirstName());
         return this;
     }
 
     @Step
-    private WebTablesRegistrationPopup enterLastName(WebTablesUser user) {
+    public WebTablesRegistrationPopup enterLastName(WebTablesUser user) {
         if (user.getFirstName() != null) this.enterLastName(user.getLastName());
         return this;
     }
 
     @Step
-    private WebTablesRegistrationPopup enterEmail(WebTablesUser user) {
+    public WebTablesRegistrationPopup enterEmail(WebTablesUser user) {
         if (user.getFirstName() != null) this.enterEmail(user.getEmail());
         return this;
     }
 
     @Step
-    private WebTablesRegistrationPopup enterAge(WebTablesUser user) {
+    public WebTablesRegistrationPopup enterAge(WebTablesUser user) {
         if (user.getFirstName() != null) this.enterAge(user.getAge());
         return this;
     }
 
     @Step
-    private WebTablesRegistrationPopup enterSalary(WebTablesUser user) {
+    public WebTablesRegistrationPopup enterSalary(WebTablesUser user) {
         if (user.getFirstName() != null) this.enterSalary(user.getSalary());
         return this;
     }
 
     @Step
-    private WebTablesRegistrationPopup enterDepartment(WebTablesUser user) {
+    public WebTablesRegistrationPopup enterDepartment(WebTablesUser user) {
         if (user.getFirstName() != null) this.enterDepartment(user.getDepartment());
         return this;
     }
 
     @Step
-    private WebTablesRegistrationPopup enterFirstName(final String firstName) {
+    public WebTablesRegistrationPopup enterFirstName(final String firstName) {
         wait.waitToBeVisible(fldFirstName);
         action.enterText(fldFirstName, firstName, true);
         return this;
     }
 
     @Step
-    private WebTablesRegistrationPopup enterLastName(final String lastName) {
+    public WebTablesRegistrationPopup enterLastName(final String lastName) {
         wait.waitToBeVisible(fldLastName);
         action.enterText(fldLastName, lastName, true);
         return this;
     }
 
     @Step
-    private WebTablesRegistrationPopup enterEmail(final String email) {
+    public WebTablesRegistrationPopup enterEmail(final String email) {
         wait.waitToBeVisible(fldEmail);
         action.enterText(fldEmail, email, true);
         return this;
     }
 
     @Step
-    private WebTablesRegistrationPopup enterAge(final int age) {
+    public WebTablesRegistrationPopup enterAge(final int age) {
         wait.waitToBeVisible(fldAge);
         action.enterText(fldAge, String.valueOf(age), true);
         return this;
     }
 
     @Step
-    private WebTablesRegistrationPopup enterSalary(final int salary) {
+    public WebTablesRegistrationPopup enterSalary(final int salary) {
         wait.waitToBeVisible(fldSalary);
         action.enterText(fldSalary, String.valueOf(salary), true);
         return this;
     }
 
     @Step
-    private WebTablesRegistrationPopup enterDepartment(final String department) {
+    public WebTablesRegistrationPopup enterDepartment(final String department) {
         wait.waitToBeVisible(fldDepartment);
         action.enterText(fldDepartment, department, true);
         return this;
