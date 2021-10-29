@@ -21,17 +21,17 @@ public class ProgressBarPage extends BaseModulePage {
     private final PageElement btnStart = new PageElement(el -> {
         el.setName("Start button");
         el.setLocator(By.xpath("//button[text()='Start']"));
-        el.setHasScroll(false);
+        el.setHasScroll(true);
     });
     private final PageElement btnStop = new PageElement(el -> {
         el.setName("Stop button");
         el.setLocator(By.xpath("//button[text()='Stop']"));
-        el.setHasScroll(false);
+        el.setHasScroll(true);
     });
     private final PageElement btnReset = new PageElement(el -> {
         el.setName("Reset button");
         el.setLocator(By.xpath("//button[text()='Reset']"));
-        el.setHasScroll(false);
+        el.setHasScroll(true);
     });
 
 

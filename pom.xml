@@ -35,6 +35,7 @@
         <browser.version>93.0</browser.version>
         <is.headless>false</is.headless>
         <remote.driver.url>http://localhost:4444/wd/hub</remote.driver.url>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -148,7 +149,7 @@
                 <version>${maven.surefire.version}</version>
                 <configuration>
                     <parallel>classes</parallel>
-                    <threadCount>2</threadCount>
+                    <threadCount>3</threadCount>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/resources/regressionSuite.xml</suiteXmlFile>
                     </suiteXmlFiles>

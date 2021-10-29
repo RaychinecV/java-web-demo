@@ -31,47 +31,47 @@ public class ElementsMenu extends BaseWebPage implements BaseMenu {
         TEXT_BOX(new PageElement(el -> {
             el.setName("Text box");
             el.setLocator(By.xpath("//span[text()='Text Box']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         CHECK_BOX(new PageElement(el -> {
             el.setName("Check box");
             el.setLocator(By.xpath("//span[text()='Check Box']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         RADIO_BUTTON(new PageElement(el -> {
             el.setName("Radio Button");
             el.setLocator(By.xpath("//span[text()='Radio Button']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         WEB_TABLES(new PageElement(el -> {
             el.setName("Web Tables");
             el.setLocator(By.xpath("//span[text()='Web Tables']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         BUTTONS(new PageElement(el -> {
             el.setName("Buttons");
             el.setLocator(By.xpath("//span[text()='Buttons']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         LINKS(new PageElement(el -> {
             el.setName("Links");
             el.setLocator(By.xpath("//span[text()='Links']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         BROKEN_LINKS_IMAGES(new PageElement(el -> {
             el.setName("Broken Links - Images");
             el.setLocator(By.xpath("//span[text()='Broken Links - Images']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         UPLOAD_AND_DOWNLOAD(new PageElement(el -> {
             el.setName("Upload and Download");
             el.setLocator(By.xpath("Upload and Download"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         DYNAMIC_PROPERTIES(new PageElement(el -> {
             el.setName("Dynamic Properties");
             el.setLocator(By.xpath("//span[text()='Dynamic Properties']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         }));
 
         private PageElement pageElement;

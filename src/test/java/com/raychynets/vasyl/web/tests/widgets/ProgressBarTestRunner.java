@@ -9,7 +9,8 @@ import io.cucumber.testng.CucumberOptions;
                 "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"},
         features = {"src/main/java/com.raychynets.vasyl.web/features"},
         glue = {"com.raychynets.vasyl.web.steps"},
-        tags = "@progressbar"
+        tags = "@progressbar",
+        monochrome = true
 )
 public class ProgressBarTestRunner extends AbstractTestNGCucumberTests {
 }

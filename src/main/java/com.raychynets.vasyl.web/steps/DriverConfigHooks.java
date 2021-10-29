@@ -5,15 +5,16 @@ import com.raychynets.vasyl.web.utils.Screenshot;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.cucumber.java.Status;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
-public class Hooks {
+public class DriverConfigHooks {
 
     private DriverManager driverManager;
 
-    public Hooks(DriverManager driverManager) {
+    public DriverConfigHooks(DriverManager driverManager) {
         this.driverManager = driverManager;
     }
 
@@ -27,7 +28,7 @@ public class Hooks {
     @After
     public void tearDown(Scenario scenario) {
         try {
-            if (scenario.isFailed()) {
+            if (scenario.isFailed() || scenario.getStatus() == Status.SKIPPED) {
                 Screenshot.attachScreenshot();
             }
         } finally {

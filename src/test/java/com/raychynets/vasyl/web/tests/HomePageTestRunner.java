@@ -9,7 +9,9 @@ import io.cucumber.testng.CucumberOptions;
                 "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"},
         features = {"src/main/java/com.raychynets.vasyl.web/features"},
         glue = {"com.raychynets.vasyl.web.steps"},
-        tags = "@homepage"
+        tags = "@homepage",
+        monochrome = true
 )
 public class HomePageTestRunner extends AbstractTestNGCucumberTests {
+
 }

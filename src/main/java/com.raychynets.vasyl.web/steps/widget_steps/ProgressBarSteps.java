@@ -26,18 +26,18 @@ public class ProgressBarSteps {
         progressBarPage.clickOnBtnStart();
     }
 
-    @When("^click on stop button at the mark \"(\\d+)\"$")
+    @When("click on stop button at the mark {int}")
     public void clickOnStopButtonAtTheMark(int mark) {
         progressBarPage.stopProgressBarAtTheMark(mark);
     }
 
-    @Then("^validate that progress bar at the mark \"(\\d+)\"$")
-    public void validateThatProgressBarAtMark(int mark) {
+    @Then("validate that progress bar at the mark {int}")
+    public void validateThatProgressBarAtTheMark(int mark) {
         progressBarPage.validateThatProgressBarAtMark(mark);
     }
 
-    @And("wait until load bar will be at the mark \"(\\d+)\"$")
-    public void waitUntilProgressBarWillBeAtTheMark(int mark) {
+    @And("wait until load bar will be at the mark {int}")
+    public void waitUntilLoadBarWillBeAtTheMark(int mark) {
         progressBarPage.waitUntilProgressBarWillBeAtTheMark(mark);
     }
 

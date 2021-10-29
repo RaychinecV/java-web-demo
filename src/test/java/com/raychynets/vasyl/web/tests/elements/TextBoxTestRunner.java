@@ -9,7 +9,8 @@ import io.cucumber.testng.CucumberOptions;
                 "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"},
         features = {"src/main/java/com.raychynets.vasyl.web/features"},
         glue = {"com.raychynets.vasyl.web.steps"},
-        tags = "@textbox"
+        tags = "@textbox",
+        monochrome = true
 )
 public class TextBoxTestRunner extends AbstractTestNGCucumberTests {
 }

@@ -24,47 +24,47 @@ public class WidgetsMenu extends BaseWebPage implements BaseMenu {
         ACCORDIAN(new PageElement(el -> {
             el.setName("Accordian");
             el.setLocator(By.xpath("//span[text()='Accordian']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         AUTO_COMPLETE(new PageElement(el -> {
             el.setName("Auto Complete");
             el.setLocator(By.xpath("//span[text()='Auto Complete']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         DATE_PICKER(new PageElement(el -> {
             el.setName("Date Picker");
             el.setLocator(By.xpath("//span[text()='Date Picker']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         SLIDER(new PageElement(el -> {
             el.setName("Slider");
             el.setLocator(By.xpath("//span[text()='Slider']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         PROGRESS_BAR(new PageElement(el -> {
             el.setName("Progress Bar");
             el.setLocator(By.xpath("//span[text()='Progress Bar']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         TABS(new PageElement(el -> {
             el.setName("Tabs");
             el.setLocator(By.xpath("//span[text()='Tabs']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         TOOL_TIPS(new PageElement(el -> {
             el.setName("Tool Tips");
             el.setLocator(By.xpath("//span[text()='Tool Tips']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         MENU(new PageElement(el -> {
             el.setName("Menu");
             el.setLocator(By.xpath("//span[text()='Menu']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         })),
         SELECT_MENU(new PageElement(el -> {
             el.setName("Select Menu");
             el.setLocator(By.xpath("//span[text()='Select Menu']"));
-            el.setHasScroll(false);
+            el.setHasScroll(true);
         }));
 
         private PageElement pageElement;

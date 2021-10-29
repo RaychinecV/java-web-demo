@@ -1,6 +1,6 @@
 @homepage
 Feature: Navigation menu on the home page
-
+@smoke
   Scenario Outline: Redirection on the home page by navigation menu
     Given open site
     When navigate to <page>

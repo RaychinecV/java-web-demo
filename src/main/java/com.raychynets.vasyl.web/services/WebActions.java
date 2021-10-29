@@ -35,6 +35,7 @@ public class WebActions extends Actions implements BaseActionService {
         element.find(baseElement).click();
         log.info("Clicked on the element <{}>.", baseElement.getName());
     }
+
     @Step
     @Override
     public void moveOnAndClick(BaseElement baseElement) {
