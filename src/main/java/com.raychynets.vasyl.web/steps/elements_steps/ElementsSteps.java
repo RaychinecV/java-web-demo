@@ -12,7 +12,7 @@ public class ElementsSteps {
 
     public ElementsSteps(PageManager pageManager) {
         this.pageManager = pageManager;
-        elementsPage = pageManager.getElementsPage();
+        this.elementsPage = pageManager.getPageInstance(ElementsPage.class);
     }
 
     @When("^select in elements submenu (TEXT_BOX|CHECK_BOX|RADIO_BUTTON|WEB_TABLES|BUTTONS|LINKS|BROKEN_LINKS_IMAGES|UPLOAD_AND_DOWNLOAD|DYNAMIC_PROPERTIES)$")

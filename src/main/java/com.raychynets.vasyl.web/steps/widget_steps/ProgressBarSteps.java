@@ -13,7 +13,7 @@ public class ProgressBarSteps {
 
     public ProgressBarSteps(PageManager pageManager) {
         this.pageManager = pageManager;
-        this.progressBarPage = pageManager.getProgressBarPage();
+        this.progressBarPage = pageManager.getPageInstance(ProgressBarPage.class);
     }
 
     @When("^progress bar page is displayed$")

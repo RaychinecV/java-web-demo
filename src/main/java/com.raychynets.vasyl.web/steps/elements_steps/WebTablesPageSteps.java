@@ -22,8 +22,8 @@ public class WebTablesPageSteps {
 
     public WebTablesPageSteps(PageManager pageManager) {
         this.pageManager = pageManager;
-        this.webTablesPage = pageManager.getWebTablesPage();
-        this.webTablesRegistrationPopup = pageManager.getWebTablesRegistrationPopup();
+        this.webTablesPage = pageManager.getPageInstance(WebTablesPage.class);
+        this.webTablesRegistrationPopup = pageManager.getPageInstance(WebTablesRegistrationPopup.class);
     }
 
     @DataTableType

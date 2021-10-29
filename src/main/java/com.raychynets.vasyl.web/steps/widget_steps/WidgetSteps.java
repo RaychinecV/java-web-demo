@@ -12,7 +12,7 @@ public class WidgetSteps {
 
     public WidgetSteps(PageManager pageManager) {
         this.pageManager = pageManager;
-        this.widgetsPage = pageManager.getWidgetsPage();
+        this.widgetsPage = pageManager.getPageInstance(WidgetsPage.class);
     }
 
     @When("^select in widgets submenu (PROGRESS_BAR|ACCORDIAN|AUTO_COMPLETE|DATE_PICKER|SLIDER|PROGRESS_BAR|TABS|TOOL_TIPS|MENU|SELECT_MENU)$")

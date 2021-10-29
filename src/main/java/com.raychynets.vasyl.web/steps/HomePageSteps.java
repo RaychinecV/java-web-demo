@@ -3,6 +3,12 @@ package com.raychynets.vasyl.web.steps;
 import com.raychynets.vasyl.web.pages.BaseModulePage;
 import com.raychynets.vasyl.web.pages.HomePage;
 import com.raychynets.vasyl.web.pages.PageManager;
+import com.raychynets.vasyl.web.pages.allerts_frame_window.AlertsFrameWindowPage;
+import com.raychynets.vasyl.web.pages.book_store_application.BookStoreApplicationPage;
+import com.raychynets.vasyl.web.pages.elements.ElementsPage;
+import com.raychynets.vasyl.web.pages.forms.FormsPage;
+import com.raychynets.vasyl.web.pages.interactions.InteractionsPage;
+import com.raychynets.vasyl.web.pages.widgets.WidgetsPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,7 +25,7 @@ public class HomePageSteps {
 
     public HomePageSteps(PageManager pageManager) {
         this.pageManager = pageManager;
-        homePage = pageManager.getHomePage();
+        homePage = pageManager.getPageInstance(HomePage.class);
     }
 
     @Step
@@ -57,17 +63,17 @@ public class HomePageSteps {
     private BaseModulePage getPageFromHomeNavigationMenu(final HomePage.HomeNavigationMenu page) {
         switch (page) {
             case ELEMENTS:
-                return pageManager.getElementsPage();
+                return pageManager.getPageInstance(ElementsPage.class);
             case FORMS:
-                return pageManager.getFormsPage();
+                return pageManager.getPageInstance(FormsPage.class);
             case BOOK_STORE_APPLICATION:
-                return pageManager.getBookStoreApplicationPage();
+                return pageManager.getPageInstance(BookStoreApplicationPage.class);
             case WIDGETS:
-                return pageManager.getWidgetsPage();
+                return pageManager.getPageInstance(WidgetsPage.class);
             case INTERACTIONS:
-                return pageManager.getInteractionsPage();
+                return pageManager.getPageInstance(InteractionsPage.class);
             case ALERTS_FRAME_WINDOWS:
-                return pageManager.getAlertsFrameWindowPage();
+                return pageManager.getPageInstance(AlertsFrameWindowPage.class);
             default:
                 throw new IllegalArgumentException(
                         String.format("Please use exist pages %s", Arrays.asList(HomePage.HomeNavigationMenu.values())));

@@ -16,7 +16,7 @@ public class TextBoxSteps {
 
     public TextBoxSteps(PageManager pageManager) {
         this.pageManager = pageManager;
-        textBoxPage = pageManager.getTextBoxPage();
+        this.textBoxPage = pageManager.getPageInstance(TextBoxPage.class);
     }
 
     @DataTableType
